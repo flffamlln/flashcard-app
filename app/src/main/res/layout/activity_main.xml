@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:layout_width="70dp"
+        android:layout_height="50dp"
+        android:id="@+id/timer"
+        android:text=""
+        android:textSize="30dp"
+        android:layout_centerHorizontal="true"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="15dp"
+        android:textColor="@color/red"
+        />
+
+    <TextView
+        android:id="@+id/flashcard_question"
+        android:layout_width="match_parent"
+        android:layout_height="220dp"
+        android:text="What is a programmer's favorite drink?"
+        android:textSize="40sp"
+        android:gravity="center"
+        android:background="@drawable/card_background"
+        android:textColor="#7d5e4d"
+        android:elevation="8dp"
+        android:layout_marginTop="70dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        />
+
+    <TextView
+        android:id="@+id/flashcard_answer"
+        android:layout_width="match_parent"
+        android:layout_height="220dp"
+        android:textSize="40sp"
+        android:gravity="center"
+        android:text="Java"
+        android:background="@drawable/card_background2"
+        android:elevation="8dp"
+        android:textColor="#538066"
+        android:layout_marginTop="70dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:visibility="invisible"/>
+
+    <TextView
+        android:id="@+id/option_one"
+        android:layout_width="match_parent"
+        android:elevation="6dp"
+        android:layout_height="80dp"
+        android:layout_centerHorizontal="true"
+        android:textSize="24sp"
+        android:gravity="center"
+        android:text="Water"
+        android:background="#e8e2d8"
+        android:textColor="#826746"
+        android:layout_below="@id/flashcard_question"
+        android:layout_marginTop="35dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        />
+
+    <TextView
+        android:id="@+id/option_two"
+        android:layout_width="match_parent"
+        android:layout_centerHorizontal="true"
+        android:layout_height="80dp"
+        android:elevation="6dp"
+        android:textSize="24sp"
+        android:gravity="center"
+        android:text="Java"
+        android:background="#e8e2d8"
+        android:textColor="#826746"
+        android:layout_below="@id/option_one"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        />
+
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="200dp"/>
+
+    <ImageView
+        android:id="@+id/rocket"
+        android:src="@drawable/rocket"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="100dp"
+        android:layout_centerHorizontal="true"
+        app:tint="#d08ad1"/>
+
+    <ImageView
+        android:id="@+id/next"
+        android:src="@drawable/next"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="310dp"
+        android:elevation="10dp"
+        app:tint="#97c1c7"/>
+
+    <ImageView
+        android:id="@+id/delete"
+        android:src="@drawable/delete"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="20dp"
+        app:tint="#f7c1a8" />
+
+
+    <ImageView
+        android:id="@+id/toggle_choices_visibility"
+        android:src="@drawable/closedeye"
+        android:layout_margin="20dp"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        app:tint="#f7c1a8"/>
+
+    <ImageView
+        android:id="@+id/add"
+        android:src="@drawable/plus"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_margin="20dp"
+        app:tint="#f7c1a8" />
+
+</RelativeLayout>
