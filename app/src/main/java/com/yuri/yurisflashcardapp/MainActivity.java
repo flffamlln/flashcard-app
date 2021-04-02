@@ -58,33 +58,56 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.flashcard_question).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                findViewById(R.id.flashcard_question).setCameraDistance(25000);
+                findViewById(R.id.flashcard_answer).setCameraDistance(25000);
+
                 findViewById(R.id.rocket).setVisibility(View.INVISIBLE);
-                View answerSideView = findViewById(R.id.flashcard_answer);
 
-                // get the center for the clipping circle
-                int cx = answerSideView.getWidth() / 2;
-                int cy = answerSideView.getHeight() / 2;
-
-                // get the final radius for the clipping circle
-                float finalRadius = (float) Math.hypot(cx, cy);
-
-                // create the animator for this view (the start radius is zero)
-                Animator anim = ViewAnimationUtils.createCircularReveal(answerSideView, cx, cy, 0f, finalRadius);
-
-                // hide the question and show the answer to prepare for playing the animation!
-                findViewById(R.id.flashcard_question).setVisibility(View.INVISIBLE);
-                findViewById(R.id.flashcard_answer).setVisibility(View.VISIBLE);
-
-                anim.setDuration(800);
-                anim.start();
+                findViewById(R.id.flashcard_question).animate()
+                        .rotationY(90)
+                        .setDuration(200)
+                        .withEndAction(
+                                new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        findViewById(R.id.flashcard_question).setVisibility(View.INVISIBLE);
+                                        findViewById(R.id.flashcard_answer).setVisibility(View.VISIBLE);
+                                        // second quarter turn
+                                        findViewById(R.id.flashcard_answer).setRotationY(-90);
+                                        findViewById(R.id.flashcard_answer).animate()
+                                                .rotationY(0)
+                                                .setDuration(150)
+                                                .start();
+                                    }
+                                }
+                        ).start();
             }
         });
 
         findViewById(R.id.flashcard_answer).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                findViewById(R.id.flashcard_answer).setVisibility(View.INVISIBLE);
-                findViewById(R.id.flashcard_question).setVisibility(View.VISIBLE);
+                findViewById(R.id.flashcard_question).setCameraDistance(25000);
+                findViewById(R.id.flashcard_answer).setCameraDistance(25000);
+
+                findViewById(R.id.flashcard_question).animate()
+                        .rotationY(90)
+                        .setDuration(200)
+                        .withEndAction(
+                                new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        findViewById(R.id.flashcard_answer).setVisibility(View.INVISIBLE);
+                                        findViewById(R.id.flashcard_question).setVisibility(View.VISIBLE);
+                                        // second quarter turn
+                                        findViewById(R.id.flashcard_question).setRotationY(-90);
+                                        findViewById(R.id.flashcard_question).animate()
+                                                .rotationY(0)
+                                                .setDuration(150)
+                                                .start();
+                                    }
+                                }
+                        ).start();
             }
         });
 
@@ -162,11 +185,31 @@ public class MainActivity extends AppCompatActivity {
                 final Animation leftOutOption = AnimationUtils.loadAnimation(v.getContext(), R.anim.left_out);
                 final Animation rightInOption = AnimationUtils.loadAnimation(v.getContext(), R.anim.right_in);
 
-                if(findViewById(R.id.flashcard_question).getVisibility() == View.INVISIBLE){
-                    findViewById(R.id.flashcard_answer).startAnimation(leftOutAnim);
-                } else{
-                    findViewById(R.id.flashcard_question).startAnimation(leftOutAnim);
+                if(findViewById(R.id.flashcard_answer).getVisibility() == View.VISIBLE){
+                    findViewById(R.id.flashcard_question).setCameraDistance(25000);
+                    findViewById(R.id.flashcard_answer).setCameraDistance(25000);
+
+                    findViewById(R.id.flashcard_question).animate()
+                            .rotationY(90)
+                            .setDuration(200)
+                            .withEndAction(
+                                    new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            findViewById(R.id.flashcard_answer).setVisibility(View.INVISIBLE);
+                                            findViewById(R.id.flashcard_question).setVisibility(View.VISIBLE);
+                                            // second quarter turn
+                                            findViewById(R.id.flashcard_question).setRotationY(-90);
+                                            findViewById(R.id.flashcard_question).animate()
+                                                    .rotationY(0)
+                                                    .setDuration(150)
+                                                    .start();
+                                        }
+                                    }
+                            ).start();
                 }
+                findViewById(R.id.flashcard_question).startAnimation(leftOutAnim);
+
 
                 leftOutOption.setAnimationListener(new Animation.AnimationListener() {
                     @Override
